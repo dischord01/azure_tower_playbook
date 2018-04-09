@@ -62,7 +62,7 @@
   azure_rm_virtualmachine:
     resource_group: "{{ resource }}"
     name: "{{ item }}"
-    admin_username: "ansible"
+    ssh_password_enabled: false
     vm_size: "{{ vmsize }}"
     ssh_public_keys:
       - path: /home/ansible/.ssh/authorized_keys
