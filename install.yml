@@ -1,0 +1,5 @@
+---
+- name: Install Dev Environment
+  hosts: AZURE_CIC2
+  roles:
+    - { role: zsh }
