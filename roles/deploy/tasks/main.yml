@@ -62,6 +62,7 @@
   azure_rm_virtualmachine:
     resource_group: "{{ resource }}"
     name: "{{ item }}"
+    os_type: Linux
     ssh_password_enabled: false
     vm_size: "{{ vmsize }}"
     ssh_public_keys:
