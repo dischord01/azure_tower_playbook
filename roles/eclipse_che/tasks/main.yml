@@ -11,8 +11,8 @@
 - name: Get facts for Public IP
   local_action:
     module: azure_rm_publicip_facts
-      resource_group: ansibleresource
-      name: linuxvm1-ip
+    resource_group: ansibleresource
+    name: linuxvm1-ip
   register: public_ip
 
 - name: debug IP
