@@ -40,7 +40,7 @@
             direction: Inbound
           - name: 'AllowEclipseCHE'
             protocol: Tcp
-            destination_port_range: 8080
+            destination_port_range: *
             access: Allow
             priority: 999
             direction: Inbound
