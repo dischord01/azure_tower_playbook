@@ -14,6 +14,10 @@
     name: linuxvm1-ip
   register: public_ip
 
+- name: debug IP
+  debug: 
+    var: public_ip
+
 - name: Set IP fact
   set_fact:
     ip: "{{ public_ip }}" 
