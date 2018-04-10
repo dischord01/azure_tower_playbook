@@ -6,7 +6,7 @@
    system_user: ansible
   roles:
     - { role: zsh }
-    - { role: jq }    
+    # - { role: jq }    
     - { role: eclipse_che }
 
     

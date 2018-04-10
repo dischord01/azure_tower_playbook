@@ -1,0 +1,24 @@
+# file: roles/sendgrid/tasks/main.yml
+---
+
+- sendgrid:
+      api_key: "{{ vault_sendgrid_api_key }}"
+      from_address: "user@cic2demo.com"
+      to_addresses:
+        - "bsollar@redhat.com"
+      subject: "Your Ares Training is Ready"
+      body: "You can access your Ares training at the following link: https://ares-test.circadence.com/"
+  delegate_to: localhost
+  tags:
+    - ares
+  
+- sendgrid:
+      api_key: "{{ vault_sendgrid_api_key }}"
+      from_address: "user@cic2demo.com"
+      to_addresses:
+        - "bsollar@redhat.com"
+      subject: "Your Orion Mission Planner Ready"
+      body: "You can access your mission planner at the following link: https://ares-test.circadence.com/"
+  delegate_to: localhost
+  tags:
+    - orion

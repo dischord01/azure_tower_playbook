@@ -1,0 +1,8 @@
+---
+- name: Send emails via Sendgrid
+  hosts: localhost
+  roles:
+    - { role: sendgrid, tags: ['ares']  } # orion
+
+
+    
