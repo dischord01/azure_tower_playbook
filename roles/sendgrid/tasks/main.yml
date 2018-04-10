@@ -15,36 +15,8 @@
 #     - ares
 
 
-- name: Send Ares email via sendgrid
-  command: curl --request POST --url https://api.sendgrid.com/v3/mail/send --header 'Authorization: Bearer "{{ vault_sendgrid_password }}"' --header 'Content-Type: application/json' --data "{{ lookup('file','ares.json') }}"
-  tags:
-    - ares
-  
-# - sendgrid:
-#       # username: "bsollar"
-#       # password: "{{ vault_sendgrid_password }}"
-#       api_key: "{{ vault_sendgrid_api_key }}"
-#       from_address: "user@cic2demo.com"
-#       to_addresses:
-#         - "bsollar@redhat.com"
-#       subject: "Your Orion Mission Planner Ready"
-#       body: "You can access your mission planner at the following link: https://ares-test.circadence.com/"
-#   delegate_to: localhost
-#   tags:
-#     - orion
-
-
-
-# - sendgrid:
-#       # username: "bsollar"
-#       # password: "{{ vault_sendgrid_password }}"
-#       api_key: "{{ vault_sendgrid_password }}"
-#       from_address: "user@cic2demo.com"
-#       to_addresses:
-#         - "bsollar@redhat.com"
-#       subject: "Your Ares Training is Ready"
-#       body: "You can access your Ares training at the following link: https://ares-test.circadence.com/"
-#   delegate_to: localhost
+# - name: Send Ares email via sendgrid
+#   command: curl --request POST --url https://api.sendgrid.com/v3/mail/send --header 'Authorization: Bearer "{{ vault_sendgrid_password }}"' --header 'Content-Type: application/json' --data "{{ lookup('file','ares.json') }}"
 #   tags:
 #     - ares
   
@@ -60,4 +32,32 @@
 #   delegate_to: localhost
 #   tags:
 #     - orion
+
+
+
+- sendgrid:
+      # username: "bsollar"
+      # password: "{{ vault_sendgrid_password }}"
+      api_key: "{{ vault_sendgrid_password }}"
+      from_address: "user@cic2demo.com"
+      to_addresses:
+        - "bsollar@redhat.com"
+      subject: "Your Ares Training is Ready"
+      body: "You can access your Ares training at the following link: https://ares-test.circadence.com/"
+  delegate_to: localhost
+  tags:
+    - ares
+  
+- sendgrid:
+      # username: "bsollar"
+      # password: "{{ vault_sendgrid_password }}"
+      api_key: "{{ vault_sendgrid_api_key }}"
+      from_address: "user@cic2demo.com"
+      to_addresses:
+        - "bsollar@redhat.com"
+      subject: "Your Orion Mission Planner Ready"
+      body: "You can access your mission planner at the following link: https://ares-test.circadence.com/"
+  delegate_to: localhost
+  tags:
+    - orion
 
