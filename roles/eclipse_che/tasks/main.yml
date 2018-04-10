@@ -35,4 +35,4 @@
   service: name=docker state=started enabled=yes
 
 - name: Spinup Eclipse Che
-  command: docker run -d -p 8080:8080 -e CHE_HOST=52.168.173.85 --name che3 -v /var/run/docker.sock:/var/run/docker.sock -v $(pwd):/data:Z --security-opt label:disable eclipse/che-server:6.0.0
+  command: docker run -d -p 8080:8080 -e CHE_HOST={{ ip }} --name che3 -v /var/run/docker.sock:/var/run/docker.sock -v $(pwd):/data:Z --security-opt label:disable eclipse/che-server:6.0.0
