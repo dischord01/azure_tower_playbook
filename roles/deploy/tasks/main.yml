@@ -51,18 +51,6 @@
             access: Allow
             priority: 998
             direction: Inbound
-          # - name: 'AllowJMX1'
-          #   protocol: Tcp
-          #   destination_port_range: 32001
-          #   access: Allow
-          #   priority: 997
-          #   direction: Inbound
-          # - name: 'AllowJMX2'
-          #   protocol: Tcp
-          #   destination_port_range: 32101
-          #   access: Allow
-          #   priority: 996
-          #   direction: Inbound
             
 
 - name: Create a network interface using existing security group and public IP

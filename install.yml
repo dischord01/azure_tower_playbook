@@ -3,3 +3,6 @@
   hosts: ansibleresource
   roles:
     - { role: zsh }
+    - { role: eclipse_che }
+
+    

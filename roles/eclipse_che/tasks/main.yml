@@ -1,17 +1,34 @@
 # file: roles/eclipse_che/tasks/main.yml
 ---
-# For example,
-# 
-# - name: be sure ntp is installed
-#   yum: pkg=ntp state=installed
-#   tags: ntp
-# 
-# - name: be sure ntp is configured
-#   template: src=ntp.conf.j2 dest=/etc/ntp.conf
-#   notify:
-#     - restart ntpd
-#   tags: ntp
-# 
-# - name: be sure ntpd is running and enabled
-#   service: name=ntpd state=running enabled=yes
-#   tags: ntp
+
+- name: Install base packages
+  yum:
+    name: {{ item }}
+    state: present
+  with_items:
+    - docker
+
+- name: Get facts for Public IP
+  azure_rm_publicip_facts:
+    resource_group: ansibleresource
+    name: linuxvm1-ip
+  register: public_ip
+
+- name: Set IP fact
+  set_fact:
+    ip: "{{ public_ip }}" 
+
+- name: Eanble insecure registry
+  shell: sed -i '/OPTIONS=.*/c\OPTIONS="--selinux-enabled --insecure-registry 172.30.0.0/16 --log-opt max-size=1M --log-opt max-file=3"' /etc/sysconfig/docker
+
+- name: Prepare additional block device
+  shell: echo -e "WIPE_SIGNATURES=true\nDEVS={{ os_docker_block_device }}\nVG={{ os_docker_volume_group }}" >> /etc/sysconfig/docker-storage-setup
+
+- name: Create 'docker-pool' logical volume
+  command: docker-storage-setup
+
+- name: Start docker
+  service: name=docker state=started enabled=yes
+
+- name: Spinup Eclipse Che
+  command: docker run -d -p 8080:8080 -e CHE_HOST=52.168.173.85 --name che3 -v /var/run/docker.sock:/var/run/docker.sock -v $(pwd):/data:Z --security-opt label:disable eclipse/che-server:6.0.0
