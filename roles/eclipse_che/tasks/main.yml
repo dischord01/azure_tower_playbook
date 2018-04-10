@@ -10,7 +10,7 @@
 
 - name: Get facts for Public IP
   local_action:
-    azure_rm_publicip_facts:
+    module: azure_rm_publicip_facts
       resource_group: ansibleresource
       name: linuxvm1-ip
   register: public_ip
