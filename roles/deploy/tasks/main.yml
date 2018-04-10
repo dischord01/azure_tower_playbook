@@ -50,6 +50,19 @@
             access: Allow
             priority: 998
             direction: Inbound
+          - name: 'AllowRegistry'
+            protocol: Tcp
+            destination_port_range: 32001
+            access: Allow
+            priority: 998
+            direction: Inbound
+          - name: 'AllowRegistry'
+            protocol: Tcp
+            destination_port_range: 32101
+            access: Allow
+            priority: 998
+            direction: Inbound
+            
 
 - name: Create a network interface using existing security group and public IP
   azure_rm_networkinterface:
