@@ -1,6 +1,7 @@
 ---
 - name: Install Dev Environment
   hosts: ansibleresource
+  become: yes
   roles:
     - { role: zsh }
     - { role: eclipse_che }
