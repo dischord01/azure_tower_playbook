@@ -1,9 +1,28 @@
 # file: roles/sendgrid/tasks/main.yml
 ---
-- name: Send Ares email via sendgrid
-      command: curl --request POST --url https://api.sendgrid.com/v3/mail/send --header "Authorization: Bearer {{ vault_sendgrid_password }}" --header 'Content-Type: application/json' --data "{'personalizations': [{'to': [{'email': '{{ user_email }}' }]}],'from': {'email': 'admin@cic2demo.com'},'subject': 'Sending with SendGrid is Fun','content': [{'type': 'text/plain', 'value': 'and easy to do anywhere, even with cURL'}]}"
+
+- name: Create a JIRA issue
+  uri:
+    url: https://api.sendgrid.com/v3/mail/send
+    method: POST
+    user: bsollar
+    password: "{{ vault_sendgrid_password }}"
+    body: "{{ lookup('file','ares.json') }}"
+    force_basic_auth: yes
+    status_code: 201
+    body_format: json
   tags:
     - ares
+
+
+# - name: Send Ares email via sendgrid
+#       command: curl --request POST \
+#                     --url https://api.sendgrid.com/v3/mail/send \
+#                     --header Authorization: Bearer "{{ vault_sendgrid_password }}" \
+#                     --header 'Content-Type: application/json' 
+#                     --data "{'personalizations': [{'to': [{'email': '{{ user_email }}' }]}],'from': {'email': 'admin@cic2demo.com'},'subject': "Sending with SendGrid is Fun",'content': [{'type': 'text/plain', 'value': 'and easy to do anywhere, even with cURL'}]}"
+#   tags:
+#     - ares
   
 # - sendgrid:
 #       # username: "bsollar"

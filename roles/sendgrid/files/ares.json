@@ -1,0 +1,1 @@
+"{'personalizations': [{'to': [{'email': '{{ user_email }}' }]}],'from': {'email': 'admin@cic2demo.com'},'subject': 'Sending with SendGrid is Fun','content': [{'type': 'text/plain', 'value': 'and easy to do anywhere, even with cURL'}]}"
