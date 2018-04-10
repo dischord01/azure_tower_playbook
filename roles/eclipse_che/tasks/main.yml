@@ -9,9 +9,10 @@
     - docker
 
 - name: Get facts for Public IP
-  azure_rm_publicip_facts:
-    resource_group: ansibleresource
-    name: linuxvm1-ip
+  local_action:
+    azure_rm_publicip_facts:
+      resource_group: ansibleresource
+      name: linuxvm1-ip
   register: public_ip
 
 - name: debug IP
