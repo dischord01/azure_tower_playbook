@@ -38,6 +38,12 @@
             access: Allow
             priority: 1000
             direction: Inbound
+          - name: 'AllowEclipseCHE'
+            protocol: Tcp
+            destination_port_range: 8080
+            access: Allow
+            priority: 1000
+            direction: Inbound
 
 - name: Create a network interface using existing security group and public IP
   azure_rm_networkinterface:
