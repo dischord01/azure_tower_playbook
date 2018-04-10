@@ -1,27 +1,11 @@
 # file: roles/eclipse_che/tasks/main.yml
 ---
-
 - name: Install base packages
   yum:
     name: "{{ item }}"
     state: present
   with_items:
     - docker
-
-- name: Get facts for Public IP
-  local_action:
-    module: azure_rm_publicip_facts
-    resource_group: ansibleresource
-    name: linuxvm1-ip
-  register: public_ip
-
-- name: debug IP
-  debug: 
-    var: public_ip
-
-- name: Set IP fact
-  set_fact:
-    ip: "{{ public_ip }}" 
 
 - name: Eanble insecure registry
   shell: sed -i '/OPTIONS=.*/c\OPTIONS="--selinux-enabled --insecure-registry 172.30.0.0/16 --log-opt max-size=1M --log-opt max-file=3"' /etc/sysconfig/docker
@@ -36,4 +20,4 @@
   service: name=docker state=started enabled=yes
 
 - name: Spinup Eclipse Che
-  command: docker run -d -p 8080:8080 -e CHE_HOST={{ ip }} --name che3 -v /var/run/docker.sock:/var/run/docker.sock -v $(pwd):/data:Z --security-opt label:disable eclipse/che-server:6.0.0
+  command: docker run -d -p 8080:8080 -e CHE_HOST=$(curl -H Metadata:true "http://169.254.169.254/metadata/instance/network?api-version=2017-08-01" | jq '.[][].ipv4.ipAddress[].publicIpAddress') --name che3 -v /var/run/docker.sock:/var/run/docker.sock -v $(pwd):/data:Z --security-opt label:disable eclipse/che-server:6.0.0
