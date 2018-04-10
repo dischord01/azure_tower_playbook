@@ -16,7 +16,7 @@
 
 
 - name: Send Ares email via sendgrid
-  command: curl --request POST --url https://api.sendgrid.com/v3/mail/send --header Authorization: Bearer "{{ vault_sendgrid_password }}" --header "Content-Type: application/json" --data "{{ lookup('file','ares.json') }}"
+  command: curl --request POST --url https://api.sendgrid.com/v3/mail/send --header Authorization: Bearer "{{ vault_sendgrid_password }}" --header 'Content-Type: application/json' --data {{ lookup('file','ares.json') }}
   tags:
     - ares
   
