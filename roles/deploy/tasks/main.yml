@@ -25,6 +25,7 @@
     name: "{{ item }}-ip"
   with_items:
      - "{{ vmname }}"
+  register: azure_public_ip
 
 - name: create security group
   azure_rm_securitygroup:
@@ -47,21 +48,21 @@
           - name: 'AllowRegistry'
             protocol: Tcp
             destination_port_range: 5000
-            access: Allow
-            priority: 998
-            direction: Inbound
-          - name: 'AllowJMX1'
-            protocol: Tcp
-            destination_port_range: 32001
-            access: Allow
-            priority: 997
-            direction: Inbound
-          - name: 'AllowJMX2'
-            protocol: Tcp
-            destination_port_range: 32101
-            access: Allow
-            priority: 996
-            direction: Inbound
+          #   access: Allow
+          #   priority: 998
+          #   direction: Inbound
+          # - name: 'AllowJMX1'
+          #   protocol: Tcp
+          #   destination_port_range: 32001
+          #   access: Allow
+          #   priority: 997
+          #   direction: Inbound
+          # - name: 'AllowJMX2'
+          #   protocol: Tcp
+          #   destination_port_range: 32101
+          #   access: Allow
+          #   priority: 996
+          #   direction: Inbound
             
 
 - name: Create a network interface using existing security group and public IP
@@ -103,9 +104,13 @@
     - "{{ vmname }}"
   register: azure_vm
 
-- name: debug module.
+- name: debug VM
   debug: 
     var: azure_vm
+
+- name: debug IP
+  debug: 
+    var: azure_public_ip
 
 
 - name: add host to group AZURE_CIC2
