@@ -48,9 +48,9 @@
           - name: 'AllowRegistry'
             protocol: Tcp
             destination_port_range: 5000
-          #   access: Allow
-          #   priority: 998
-          #   direction: Inbound
+            access: Allow
+            priority: 998
+            direction: Inbound
           # - name: 'AllowJMX1'
           #   protocol: Tcp
           #   destination_port_range: 32001
