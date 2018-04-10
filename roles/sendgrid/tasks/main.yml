@@ -2,9 +2,9 @@
 ---
 
 - sendgrid:
-      username: "bsollar"
-      password: "{{ vault_sendgrid_password }}"
-      # api_key: "{{ vault_sendgrid_password }}"
+      # username: "bsollar"
+      # password: "{{ vault_sendgrid_password }}"
+      api_key: "{{ vault_sendgrid_password }}"
       from_address: "user@cic2demo.com"
       to_addresses:
         - "bsollar@redhat.com"
@@ -15,9 +15,9 @@
     - ares
   
 - sendgrid:
-      username: "bsollar"
-      password: "{{ vault_sendgrid_password }}"
-      # api_key: "{{ vault_sendgrid_api_key }}"
+      # username: "bsollar"
+      # password: "{{ vault_sendgrid_password }}"
+      api_key: "{{ vault_sendgrid_api_key }}"
       from_address: "user@cic2demo.com"
       to_addresses:
         - "bsollar@redhat.com"
