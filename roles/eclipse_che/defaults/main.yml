@@ -1,0 +1,4 @@
+# file: roles/eclipse_che/defaults/main.yml
+---
+#
+# foo: default

@@ -1,6 +1,6 @@
 ---
 username: ansible
-vmsize: Standard_D1
+vmsize: Standard_D2s_v3
 resource: ansibleresource
 vmname:
   - linuxvm1

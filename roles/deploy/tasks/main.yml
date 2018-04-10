@@ -71,8 +71,8 @@
         key_data: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDfAmut52v4L2vsU7GYLh5Mc59pYAZZzkQf7VuBnZfnXeUZNf0VKOi/076TUxnAWVgWFgqNw2NvuPbla2knw53rJrDD17+vfWxeYjpM/hoV8YuITBtvmafFxKx9hZEbLGZmE9ulu9xZXjE3BQcPinLzZrxxznC49IbMmKo57eE+9NUVhHhFiEA3KaSxPo1m35Bq0wBtFxP/i0VB+L7q5vuFuQswCm9bNnc+84VwF3uF6YLDxKlnDcIQbInXioQUknfBV/aXXo3gjSkaz2CxrEiTIVFNAPGELfprFkV2Ejdmoi6DVmHFTsC3ThAbOJZKgmzNoWSE/IK43CKgQxtvixuF dischord01@dischord01.local"
     image:
      offer: CentOS
-     publisher: OpenLogic
-     sku: '7.2'
+     publisher: "Rogue Wave Software"
+     sku: '7.4'
      version: latest
   with_items:
     - "{{ vmname }}"
