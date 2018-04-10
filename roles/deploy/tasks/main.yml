@@ -40,9 +40,15 @@
             direction: Inbound
           - name: 'AllowEclipseCHE'
             protocol: Tcp
-            destination_port_range: "*"
+            destination_port_range: 8080
             access: Allow
             priority: 999
+            direction: Inbound
+          - name: 'AllowRegistry'
+            protocol: Tcp
+            destination_port_range: 5000
+            access: Allow
+            priority: 998
             direction: Inbound
 
 - name: Create a network interface using existing security group and public IP
