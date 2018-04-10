@@ -54,13 +54,13 @@
             protocol: Tcp
             destination_port_range: 32001
             access: Allow
-            priority: 998
+            priority: 997
             direction: Inbound
           - name: 'AllowRegistry'
             protocol: Tcp
             destination_port_range: 32101
             access: Allow
-            priority: 998
+            priority: 996
             direction: Inbound
             
 
