@@ -108,3 +108,6 @@
     groups: azure_group
     ansible_user: ansible
   with_items: "{{ azure_ip.ansible_facts.azure_publicipaddresses }}"
+
+- pause:
+    minutes: 1
