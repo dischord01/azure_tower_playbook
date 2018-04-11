@@ -1,6 +1,6 @@
 ---
 - name: Install 
-  hosts: azureresource
+  hosts: ansibleresource
   become: yes
   vars:
    system_user: ansible
