@@ -94,14 +94,14 @@
 
 - name: Get Public IP
   azure_rm_publicipaddress_facts:
-    resource_group: '{{ vault_azure_resource_group }}'
-    name: 'linuxvm1'
+    resource_group: "{{ vault_azure_resource_group }}"
+    # name: "linuxvm1"
   register: azure_ip
 
 - name: debug the ip
   debug:
     var: azure_ip
-    
+
 
 - name: Add new instance to host group
   add_host:
