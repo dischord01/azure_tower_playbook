@@ -13,10 +13,7 @@
   with_items:
     - yum-utils
     - docker-ce
-
-- name: Eanble insecure registry
-  shell: sed -i '/OPTIONS=.*/c\OPTIONS="--selinux-enabled --insecure-registry 172.30.0.0/16 --log-opt max-size=1M --log-opt max-file=3"' /etc/sysconfig/docker
-
+    
 - name: Start docker
   service: name=docker state=started enabled=yes
 
