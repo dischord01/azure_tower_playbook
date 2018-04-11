@@ -1,5 +1,5 @@
 ---
-- name: Install Dev Environment
+- name: Install Eclipse Che
   hosts: azureresource
   become: yes
   vars:
