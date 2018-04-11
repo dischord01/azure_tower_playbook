@@ -105,6 +105,6 @@
 - name: Add new instance to host group
   add_host:
     name: "{{ item.properties.ipAddress }}"
-    groups: azure_group
+    groups: azure
     ansible_user: ansible
   with_items: "{{ azure_ip.ansible_facts.azure_publicipaddresses }}"
