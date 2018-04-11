@@ -10,7 +10,6 @@
 - name: Install Eclipse Che
   hosts: azure
   become: yes
-  gather_facts: false
   roles:
     - zsh
     - eclipse_che
