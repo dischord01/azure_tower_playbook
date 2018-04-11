@@ -1,9 +1,10 @@
 ---
-- name: Install Eclipse Che
-  hosts: ansibleresource
+- name: Install 
+  hosts: azureresource
   become: yes
   vars:
    system_user: ansible
   roles:
-    - { role: zsh }
+    - { role: zsh         }
+    - { role: jq          }
     - { role: eclipse_che }
