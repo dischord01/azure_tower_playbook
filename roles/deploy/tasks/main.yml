@@ -95,7 +95,7 @@
 - name: Get Public IP
   azure_rm_publicipaddress_facts:
     resource_group: "{{ vault_azure_resource_group }}"
-    # name: "linuxvm1"
+    name: "linuxvm101"
   register: azure_ip
 
 - name: debug the ip
