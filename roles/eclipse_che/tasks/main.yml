@@ -1,11 +1,18 @@
 # file: roles/eclipse_che/tasks/main.yml
 ---
+- name: Install Docker-CE Repo
+  command: yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+
+- name: Yum stuff
+  command: yum makecache fast
+
 - name: Install base packages
   yum:
     name: "{{ item }}"
     state: present
   with_items:
-    - docker
+    - yum-utils
+    - docker-ce
 
 - name: Eanble insecure registry
   shell: sed -i '/OPTIONS=.*/c\OPTIONS="--selinux-enabled --insecure-registry 172.30.0.0/16 --log-opt max-size=1M --log-opt max-file=3"' /etc/sysconfig/docker
@@ -14,7 +21,7 @@
   service: name=docker state=started enabled=yes
 
 - name: Spinup Eclipse Che
-  command: docker run -d -p 8080:8080  -e CHE_HOST=40.71.209.23:8080 --name che3 -v /var/run/docker.sock:/var/run/docker.sock -v /home/ansible:/data:Z --security-opt label:disable eclipse/che-server:6.0.0
+  command: PUBLIC_IP="$(curl -H Metadata:true 'http://169.254.169.254/metadata/instance/network?api-version=2017-08-01' | jq '.[][].ipv4.ipAddress[].publicIpAddress')" && docker run -d -p 8080:8080  -e CHE_HOST=$PUBLIC_IP --name che3 -v /var/run/docker.sock:/var/run/docker.sock -v /home/ansible:/data:Z --security-opt label:disable eclipse/che-server:6.0.0
 
 # -e CHE_HOST="$(curl -H Metadata:true 'http://169.254.169.254/metadata/instance/network?api-version=2017-08-01' | jq '.[][].ipv4.ipAddress[].publicIpAddress')"
 
