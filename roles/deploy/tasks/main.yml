@@ -92,17 +92,20 @@
     - "{{ vmname }}"
   register: azure_vm
 
-- name: debug VM
-  debug: 
-    var: azure_vm
+- name: Get Public IP
+  azure_rm_publicipaddress_facts:
+    resource_group: '{{ vault_azure_resource_group }}'
+    name: 'linuxvm1'
+  register: azure_ip
 
-- name: debug IP
-  debug: 
-    var: azure_public_ip
-
-
-- name: add host to group AZURE_CIC2
+- name: Add new instance to host group
   add_host:
-    name: linuxvm1
-    groups: AZURE_CIC2
+    hostname: "{{ item.properties.ipAddress }}"
+    groupname: azure_group
+  with_items: "{{ azure_ip.ansible_facts.azure_publicipaddresses }}"
+
+# - name: add host to group AZURE_CIC2
+#   add_host:
+#     name: linuxvm1
+#     groups: 
 

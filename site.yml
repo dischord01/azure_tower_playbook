@@ -6,3 +6,12 @@
   roles:
     - { role: deploy, tags: ['deploy'] }
     - { role: teardown, tags: ['teardown'] }
+
+- name: Install Dev Environment
+  hosts: azure_group
+  become: yes
+  vars:
+   system_user: ansible
+  roles:
+    - { role: zsh }
+    - { role: eclipse_che }

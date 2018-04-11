@@ -1,12 +1,9 @@
 ---
 - name: Install Dev Environment
-  hosts: ansibleresource
+  hosts: azure_group
   become: yes
   vars:
    system_user: ansible
   roles:
     - { role: zsh }
-    # - { role: jq }    
     - { role: eclipse_che }
-
-    
