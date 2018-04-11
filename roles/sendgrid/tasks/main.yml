@@ -1,16 +1,21 @@
 # file: roles/sendgrid/tasks/main.yml
 ---
 
-# - name: Create a JIRA issue
+
+# - name: Email via Sendgrid
 #   uri:
 #     url: https://api.sendgrid.com/v3/mail/send
 #     method: POST
-#     user: bsollar
-#     password: "{{ vault_sendgrid_password }}"
-#     body: "{{ lookup('file','ares.json') }}"
+#     # user: bsollar
+#     # password: "{{ vault_sendgrid_password }}"
+#     headers:
+#       Authorization: "Bearer {{ vault_sendgrid_api_key }}"
+#       Content-Type: "application/json"
+#     body: "{{ lookup('template','ares.json') }}"
 #     force_basic_auth: yes
 #     status_code: 201
 #     body_format: json
+#   delegate_to: localhost
 #   tags:
 #     - ares
 
@@ -19,21 +24,6 @@
 #   command: curl --request POST --url https://api.sendgrid.com/v3/mail/send --header 'Authorization: Bearer "{{ vault_sendgrid_password }}"' --header 'Content-Type: application/json' --data "{{ lookup('file','ares.json') }}"
 #   tags:
 #     - ares
-  
-# - sendgrid:
-#       # username: "bsollar"
-#       # password: "{{ vault_sendgrid_password }}"
-#       api_key: "{{ vault_sendgrid_api_key }}"
-#       from_address: "user@cic2demo.com"
-#       to_addresses:
-#         - "bsollar@redhat.com"
-#       subject: "Your Orion Mission Planner Ready"
-#       body: "You can access your mission planner at the following link: https://ares-test.circadence.com/"
-#   delegate_to: localhost
-#   tags:
-#     - orion
-
-
 
 - sendgrid:
       # username: "bsollar"
