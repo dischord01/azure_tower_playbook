@@ -107,6 +107,7 @@
   add_host:
     hostname: "{{ item.properties.ipAddress }}"
     groupname: azure_group
+    ansible_user: ansible
   with_items: "{{ azure_ip.ansible_facts.azure_publicipaddresses }}"
 
 # - name: add host to group AZURE_CIC2
