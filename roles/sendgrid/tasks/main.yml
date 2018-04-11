@@ -5,9 +5,10 @@
       from_address: "user@cic2demo.com"
       to_addresses:
         - "bsollar@redhat.com"
-      subject: "Your Orion Mission Planner Ready"
+      subject: "Your Ares Mission Planner is Ready"
       body: "You can access your mission planner at the following link: https://ares-test.circadence.com/"
   delegate_to: localhost
+  when: email == "ares"
   tags:
     - ares
   
@@ -16,9 +17,10 @@
       from_address: "user@cic2demo.com"
       to_addresses:
         - "bsollar@redhat.com"
-      subject: "Your Orion Mission Planner Ready"
+      subject: "Your Orion Mission Planner is Ready"
       body: "You can access your mission planner at the following link: https://orion-test.circadence.com/"
   delegate_to: localhost
+  when: email == "orion"
   tags:
     - orion
 
