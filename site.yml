@@ -13,5 +13,5 @@
   vars:
    system_user: ansible
   roles:
-    - { role: zsh }
-    - { role: eclipse_che }
+    - zsh
+    - eclipse_che
