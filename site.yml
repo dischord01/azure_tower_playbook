@@ -11,6 +11,11 @@
 - name: Install Dev Environment
   hosts: azure_group
   become: yes
-  roles:
-    - zsh
-    - eclipse_che
+  tasks:
+    - name: time
+      command: time
+ 
+ 
+  # roles:
+  #   - zsh
+  #   - eclipse_che
