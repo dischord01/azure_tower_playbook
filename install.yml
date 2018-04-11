@@ -1,6 +1,6 @@
 ---
 - name: Install Eclipse Che
-  hosts: azureresource
+  hosts: ansibleresource
   become: yes
   vars:
    system_user: ansible
