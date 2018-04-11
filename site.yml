@@ -8,7 +8,7 @@
     - { role: teardown, tags: ['teardown'] }
 
 - name: Install Eclipse Che
-  hosts: azure
+  hosts: linuxvm1
   become: yes
   roles:
     - zsh
