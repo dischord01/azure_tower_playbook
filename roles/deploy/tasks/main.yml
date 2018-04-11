@@ -98,6 +98,11 @@
     name: 'linuxvm1'
   register: azure_ip
 
+- name: debug the ip
+  debug:
+    var: azure_ip
+    
+
 - name: Add new instance to host group
   add_host:
     hostname: "{{ item.properties.ipAddress }}"
