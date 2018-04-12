@@ -9,6 +9,8 @@
 - name: Install Nodejs App
   hosts: azure
   become: yes
+  vars:
+    system_user: ansible
   roles:
     - zsh
     - epel  
