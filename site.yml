@@ -10,17 +10,9 @@
   hosts: azure
   become: yes
   roles:
-    - zsh
-    - eclipse_che
-
-- name: Install nodejs app
-  hosts: azure
-  become: yes
-  roles:
     - epel  
     - mongodb 
     - nodejs  
     - nodejs_app
-
 
 
