@@ -39,7 +39,7 @@
 - name: Git Clone
   git:
     dest: "/home/{{ system_user }}/nodejs_app"
-    repo: "https://github.com/sahat/hackathon-starter.git"
+    repo: "https://github.com/dischord01/hackathon-starter.git"
 
 # Change directory
 - name: NPM Install  
