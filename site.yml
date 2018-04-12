@@ -6,10 +6,11 @@
   roles:
     - deploy
 
-
-- name: Install Eclipse Che
-  hosts: azure
+- name: Install nodejs app
+  hosts: all
   become: yes
   roles:
-    - zsh
-    - eclipse_che
+  - epel  
+  - mongodb 
+  - nodejs  
+  - nodejs_app
