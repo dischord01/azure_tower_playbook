@@ -7,10 +7,18 @@
     - deploy
 
 - name: Install nodejs app
-  hosts: all
+  hosts: azure
   become: yes
   roles:
-  - epel  
-  - mongodb 
-  - nodejs  
-  - nodejs_app
+    - epel  
+    - mongodb 
+    - nodejs  
+    - nodejs_app
+
+
+# - name: Install Eclipse Che
+#   hosts: azure
+#   become: yes
+#   roles:
+#     - zsh
+#     - eclipse_che
