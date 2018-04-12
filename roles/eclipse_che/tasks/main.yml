@@ -18,17 +18,42 @@
   service: name=docker state=started enabled=yes
 
 - name: Spinup Eclipse Che
-  command: export PUBLIC_IP="$(curl -H Metadata:true http://169.254.169.254/metadata/instance/network?api-version=2017-08-01 | jq '.[][].ipv4.ipAddress[].publicIpAddress')" && docker run -d -p 8080:8080  -e CHE_HOST=$PUBLIC_IP --name che3 -v /var/run/docker.sock:/var/run/docker.sock -v /home/ansible:/data:Z --security-opt label:disable eclipse/che-server:6.0.0
+  command: docker run -d -p 8080:8080  -e CHE_HOST=$PUBLIC_IP --name che3 -v /var/run/docker.sock:/var/run/docker.sock -v /home/ansible:/data:Z --security-opt label:disable eclipse/che-server:6.0.0
 
 # -e CHE_HOST="$(curl -H Metadata:true 'http://169.254.169.254/metadata/instance/network?api-version=2017-08-01' | jq '.[][].ipv4.ipAddress[].publicIpAddress')"
 
-sudo docker run -p 8080:8080 \
-           --name che \
-           --rm \
-           -e CHE_HOST=40.71.209.23:8080 \
-           -e CHE_DOCKER_IP=40.71.209.23
-           -v /var/run/docker.sock:/var/run/docker.sock \
-           -v /home/ansible/data:/data \
-           eclipse/che-server:latest
+# sudo docker run -p 8080:8080 \
+#            --name che \
+#            -it \
+#            --rm \
+#            -e CHE_HOST=40.71.209.23:8080 \
+#            -e CHE_DOCKER_IP=10.0.0.5 \
+#            -e CHE_SINGLE_PORT=true \
+#            -v /var/run/docker.sock:/var/run/docker.sock \
+#            -v /home/ansible/data:/data:Z \
+#            --security-opt label:disable \
+#            eclipse/che-server:nightly
 
-           -e CHE_SINGLE_PORT=true \
+# sudo docker run -p 8080:8080 \
+#            --name che \
+#            -it \
+#            --rm \
+#            -e DOCKER_HOST=40.71.209.23 \
+#            -e CHE_HOST=40.71.209.23 \
+#            -e CHE_PORT=8080 \
+#            -v /home/ansible/data:/data:Z \
+#            --security-opt label:disable \
+#            eclipse/che-cli:latest start
+
+# -e CHE_DOCKER_IP_EXTERNAL=40.71.209.23:8080 \
+#            -e CHE_SINGLE_PORT=true \
+
+# sudo docker run -p 8080:8080 \
+#            --name che \
+#            -it \
+#            --rm \
+#            -e CHE_HOST=40.71.209.23 \
+#            -e CHE_PORT=8080 \
+#            -v /var/run/docker.sock:/var/run/docker.sock \
+#            -v /home/ansible/data:/data \
+#            eclipse/che-cli:latest info --network
