@@ -6,7 +6,7 @@
   roles:
     - deploy
 
-- name: Install Eclipse Che
+- name: Install Nodejs App
   hosts: azure
   become: yes
   roles:
