@@ -1,0 +1,16 @@
+---
+- name: Deploy Azure Resources 
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  roles:
+    - deploy
+
+- name: Install Eclipse Che
+  hosts: azure
+  become: yes
+  vars:
+    system_user: ansible
+  roles:
+    - zsh
+    - eclipse_che
