@@ -15,7 +15,7 @@
     enabled: yes
 
 - name: Start cic2
-  docker:
+  docker_container:
     name: cic2
     image: dischord01/cic2:02
     state: started
