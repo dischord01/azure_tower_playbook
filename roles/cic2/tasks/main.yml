@@ -8,18 +8,7 @@
   with_items:
     - docker
 
-- name: Start docker
-  service: 
-    name: docker 
-    state: started 
-    enabled: yes
-
 - name: Start cic2
-  docker_container:
-    name: cic2
-    image: dischord01/cic2:02
-    state: started
-    ports:
-    - "8080:8080"
+  command: docker run -ti --rm -p 8080:8080 -e MONGODB_URI={{ vault_mongo_uri }} dischord01/cic2:02
 
 
