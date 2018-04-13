@@ -14,14 +14,12 @@
     state: started 
     enabled: yes
 
-- name: Pull cic2 image
-  docker_image:
-    name: dischord01/cic2:02
-
 - name: Start cic2
   docker:
     name: cic2
-    image: cic2:02
+    image: dischord01/cic2:02
     state: started
     ports:
     - "8080:8080"
+
+
