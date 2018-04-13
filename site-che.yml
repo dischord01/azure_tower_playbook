@@ -14,3 +14,20 @@
   roles:
     - zsh
     - eclipse_che
+
+- name: Send Email with URL
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  tasks:
+    - name: Send Email 
+      sendgrid:
+        api_key: "{{ vault_sendgrid_api_key }}"
+        from_address: "user@cic2demo.com"
+        to_addresses:
+          - "bsollar@redhat.com"
+          # - "{{ user_email }}"
+        subject: "Your Cloud IDE is Ready"
+        body: "You can access your Eclipse Che at the following link: http://cic2.redhatgov.io:8888"
+      delegate_to: localhost
