@@ -13,9 +13,7 @@
     system_user: ansible
   roles:
     - zsh
-    - epel  
-    - mongodb 
-    - nodejs  
-    - nodejs_app
+    - epel
+    - cic2
 
 

@@ -1,0 +1,27 @@
+# file: roles/cic2/tasks/main.yml
+---
+
+- name: Install base packages
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - docker
+
+- name: Start docker
+  service: 
+    name: docker 
+    state: started 
+    enabled: yes
+
+- name: Pull cic2 image
+  docker_image:
+    name: dischord01/cic2:02
+
+- name: Start cic2
+  docker:
+    name: cic2
+    image: cic2:02
+    state: started
+    ports:
+    - "8080:8080"
