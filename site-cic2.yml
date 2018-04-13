@@ -16,4 +16,19 @@
     - epel
     - cic2
 
-
+- name: Send Email with URL
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  
+  tasks:
+    - name: Send Email 
+      sendgrid:
+        api_key: "{{ vault_sendgrid_api_key }}"
+        from_address: "user@cic2demo.com"
+        to_addresses:
+          - "bsollar@redhat.com"
+          - "{{ user_email }}"
+        subject: "Your Circadence API Integration is Ready"
+        body: "You can access your Circadence API Integration at the following link: http://cic2.redhatgov.io"
+      delegate_to: localhost
