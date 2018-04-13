@@ -1,20 +1,20 @@
 ---
-# - name: Deploy Azure Resources 
-#   hosts: localhost
-#   connection: local
-#   gather_facts: false
-#   roles:
-#     - deploy
+- name: Deploy Azure Resources 
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  roles:
+    - deploy
 
-# - name: Install Nodejs App
-#   hosts: azure
-#   become: yes
-#   vars:
-#     system_user: ansible
-#   roles:
-#     - zsh
-#     - epel
-#     - cic2
+- name: Install Nodejs App
+  hosts: azure
+  become: yes
+  vars:
+    system_user: ansible
+  roles:
+    - zsh
+    - epel
+    - cic2
 
 - name: Send Email with URL
   hosts: localhost
