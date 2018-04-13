@@ -12,3 +12,13 @@
   command: docker run -d --rm -p 8080:8080 -e MONGODB_URI={{ vault_mongo_uri }} dischord01/cic2:02
 
 
+- name: Send Email with URL 
+  sendgrid:
+      api_key: "{{ vault_sendgrid_api_key }}"
+      from_address: "user@cic2demo.com"
+      to_addresses:
+        - "bsollar@redhat.com"
+        - "{{ user_email }}"
+      subject: "Your Circadence API Integration is Ready"
+      body: "You can access your Circadence API Integration at the following link: http://cic2.redhatgov.io"
+  delegate_to: localhost
